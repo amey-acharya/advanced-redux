@@ -1,15 +1,22 @@
-import Card from "../UI/Card";
-import classes from "./ProductItem.module.css";
-import { cartActions } from "../../store/cart-slice";
-import { useDispatch} from "react-redux";
+import { useDispatch } from 'react-redux';
+
+import { cartActions } from '../../store/cart-slice';
+import Card from '../UI/Card';
+import classes from './ProductItem.module.css';
 
 const ProductItem = (props) => {
-  const { id, title, price, description } = props;
   const dispatch = useDispatch();
 
+  const { title, price, description, id } = props;
+
   const addToCartHandler = () => {
+
+
+    // and then send Http request
+    // fetch('firebase-url', { method: 'POST', body: JSON.stringify(newCart) })
+
     dispatch(
-      cartActions.add({
+      cartActions.addItemToCart({
         id,
         title,
         price,
